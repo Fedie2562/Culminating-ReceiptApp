@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<component type="Form" name="Main" cloudDestinationProperty="Main" scrollVisible="false" layout="TableLayout" tableLayoutRows="9" tableLayoutColumns="1" title="Receipt App" >
+  <component type="Label" name="Label" cloudDestinationProperty="Label" text="Company Name" >
+  </component>
+  <component type="TextField" name="CompanyName" cloudBoundProperty="text" cloudDestinationProperty="CompanyName" text="" >
+  </component>
+  <component type="Label" name="Label1" cloudDestinationProperty="Label1" text="Destination Email" >
+  </component>
+  <component type="TextField" name="Email" cloudBoundProperty="text" cloudDestinationProperty="TextField" text="" >
+  </component>
+  <component type="Label" name="Label2" cloudDestinationProperty="Label2" text="Product" >
+  </component>
+  <component type="TextField" name="product" cloudBoundProperty="text" cloudDestinationProperty="Message" text="" >
+  </component>
+  <component type="Label" name="Label3" cloudDestinationProperty="Label3" text="Amount" >
+  </component>
+  <component type="TextField" name="amount" cloudBoundProperty="text" cloudDestinationProperty="amount" text="" >
+  </component>
+  <component type="Button" name="SendButton" cloudDestinationProperty="SendButton" text="Send" >
+  </component>
+</component>
