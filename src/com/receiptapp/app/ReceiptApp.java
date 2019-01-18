@@ -1,3 +1,8 @@
+/*
+ * Culminating receipt app
+ * Ferris, Jared and Corbin.
+ * January 8th 2018
+ */
 package com.receiptapp.app;
 
 
@@ -78,15 +83,15 @@ public class ReceiptApp {
             System.out.println(email.getText()+"\n"+CompanyName.getText());
             Message m = new Message(CompanyName.getText()+", this is a receipt regarding the sale of "+amount.getText()+" "+product.getText());
             System.out.println(CompanyName.getText()+", this is a receipt regarding the sale of "+amount.getText()+" "+product.getText());
-            //
-            Dialog dlg = new Dialog("At Bottom");
-            dlg.setLayout(new BorderLayout());
-            // span label accepts the text and the UIID for the dialog body
-            dlg.add(new SpanLabel("Sent", ""));
+            // Make a dialog confirming that the message has been sent
+            Dialog dlg = new Dialog("The receipt has been sent");
+            dlg.setLayout(BoxLayout.y());
+            dlg.add(new SpanLabel("", ""));
             int h = Display.getInstance().getDisplayHeight();
             dlg.setDisposeWhenPointerOutOfBounds(true);
-            dlg.show(h /8 * 7, 0, 0, 0);
-            //Display.getInstance().sendMessage(new String[] {email.getText()}, product.getText(), m);
+            dlg.show(h /12 * 7, 0, 0, 0);
+            // Sending the actual message to the specified email
+            Display.getInstance().sendMessage(new String[] {email.getText()}, product.getText(), m);
             System.out.println("Done");
         }
         });
