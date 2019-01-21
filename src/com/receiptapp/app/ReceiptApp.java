@@ -5,7 +5,7 @@
  */
 package com.receiptapp.app;
 
-
+// Imports
 import com.codename1.components.SpanLabel;
 import com.codename1.io.Log;
 import com.codename1.messaging.Message;
@@ -43,9 +43,6 @@ public class ReceiptApp {
         // Enable Toolbar on all Forms by default
         Toolbar.setGlobalToolbar(true);
 
-        // Pro only feature
-        Log.bindCrashProtection(true);
-
         addNetworkErrorListener(err -> {
             // prevent the event from propagating
             err.consume();
@@ -62,6 +59,7 @@ public class ReceiptApp {
             current.show();
             return;
         }
+        // Set up the UI
         Form receiptApp = new Form("Receipt App", BoxLayout.y());
         receiptApp.add(new Label("Company Name"));
         TextField CompanyName = new TextField("");
@@ -77,6 +75,7 @@ public class ReceiptApp {
         receiptApp.add(amount);
         Button send = new Button("Send");
         receiptApp.add(send);
+        // What to do when the send button is pressed
         send.addActionListener(new ActionListener(){  
         public void actionPerformed(ActionEvent e){  
             System.out.println("Sent");
