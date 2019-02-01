@@ -89,9 +89,11 @@ public class ReceiptApp {
         public void actionPerformed(ActionEvent e){  
             System.out.println("Sent");
             //Creating the message to be sent in the email
-            Message mail = new Message("Date : "+dateFormat.format(date)+"\n"
-                    +CompanyName.getText()+", this is a receipt regarding the sale of "
-                    +amount.getText()+" "+product.getText());
+            Message mail = new Message("Date : "+dateFormat.format(date)+"\n--------------\n"
+                    +"Seller : "+CompanyName.getText()+"\n"
+                    +"Product : "+product.getText()
+                    +"Amount : "+amount.getText()
+                    +"\nThank you for your business");
             
             // Notification if the email text field was left empty
             if(email.getText().equalsIgnoreCase("")){
