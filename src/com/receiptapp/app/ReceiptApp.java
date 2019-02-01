@@ -2,6 +2,7 @@
  * Culminating receipt app
  * Ferris, Jared and Corbin.
  * January 8th 2018
+ * This is a simple receipt making app for mobile devices
  */
 package com.receiptapp.app;
 
@@ -65,6 +66,7 @@ public class ReceiptApp {
         // Get the date
         DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
 	Date date = new Date();
+        
         // Set up the UI
         Form receiptApp = new Form("Receipt App", BoxLayout.y());
         receiptApp.add(new Label("Company Name"));
@@ -81,6 +83,7 @@ public class ReceiptApp {
         receiptApp.add(amount);
         Button send = new Button("Send");
         receiptApp.add(send);
+        
         // What to do when the send button is pressed
         send.addActionListener(new ActionListener(){  
         public void actionPerformed(ActionEvent e){  
@@ -89,10 +92,21 @@ public class ReceiptApp {
             Message mail = new Message("Date : "+dateFormat.format(date)+"\n"
                     +CompanyName.getText()+", this is a receipt regarding the sale of "
                     +amount.getText()+" "+product.getText());
-            /*System.out.println("Date : "+dateFormat.format(date)+"\n"
-                    +CompanyName.getText()+", this is a receipt regarding the sale of "
-                    +amount.getText()+" "+product.getText());
-                    */
+            
+            // Notification if the email text field was left empty
+            if(email.getText().equalsIgnoreCase("")){
+                Dialog dlg = new Dialog("The email field was left empty");
+                dlg.setLayout(BoxLayout.y());
+                dlg.add(new SpanLabel("", ""));
+                int h = Display.getInstance().getDisplayHeight();
+                dlg.setDisposeWhenPointerOutOfBounds(true);
+                dlg.show(h /12 * 7, 0, 0, 0);
+            }
+            
+            // Sending the actual message to the specified email
+            Display.getInstance().sendMessage(new String[] {email.getText()}, product.getText(), mail);
+            System.out.println("Done");
+            
             // Make a dialog confirming that the message has been sent
             Dialog dlg = new Dialog("The receipt has been sent");
             dlg.setLayout(BoxLayout.y());
@@ -100,9 +114,6 @@ public class ReceiptApp {
             int h = Display.getInstance().getDisplayHeight();
             dlg.setDisposeWhenPointerOutOfBounds(true);
             dlg.show(h /12 * 7, 0, 0, 0);
-            // Sending the actual message to the specified email
-            Display.getInstance().sendMessage(new String[] {email.getText()}, product.getText(), mail);
-            System.out.println("Done");
         }
         });
         receiptApp.show();
